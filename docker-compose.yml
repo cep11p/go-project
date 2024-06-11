@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  docker-gs-ping:
+    build:
+      context: .
+    container_name: rest-server
+    hostname: rest-server
+    networks:
+      - mynet
+    ports:
+      - 70:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+networks:
+  mynet:
+    driver: bridge
